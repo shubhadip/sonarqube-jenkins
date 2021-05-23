@@ -44,6 +44,7 @@ pipeline {
 		}
 		// will not work locally, add webhook in sonar to work
 		// https://jenkins:8080/sonarqube-webhook
+		// doc: https://www.jenkins.io/doc/pipeline/steps/sonar/
 		// stage('Quality Gate') {
 		// 	steps{
 		// 		script {
