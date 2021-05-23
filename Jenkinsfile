@@ -6,6 +6,7 @@ pipeline {
     stages{
         stage("Prepare"){
             steps{
+                sh "npm install";
                 sh "npm install -g yarn";
             }
         }
