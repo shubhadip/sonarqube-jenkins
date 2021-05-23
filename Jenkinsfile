@@ -7,7 +7,8 @@ pipeline {
         stage("Prepare"){
             steps{
                 sh "npm install";
-                sh "npm install -g yarn";
+                // sh "npm install -g yarn";
+                // git url: "https://github.com/shubhadip/sonarqube-jenkins"; 
             }
         }
         stage("Lint"){
@@ -30,12 +31,12 @@ pipeline {
               scannerHome = tool 'sonarqube'
           }
           steps {
-            withSonarQubeEnv('sonarqube') {
+            withSonarQubeEnv(installationName: 'sonarqube', credentialsId: 'sonarqube-jenkins') {
               sh '''
               ${scannerHome}/bin/sonar-scanner \
               -D sonar.projectKey=sonarqube-jenkins \
               -D sonar.projectName=sonarqube-jenkins \
-              -Dsonar.projectVersion=${env.BUILD_NUMBER} \
+              -Dsonar.projectVersion='${env.BUILD_NUMBER}' \
               -D sonar.sources=. \
               '''
             }
