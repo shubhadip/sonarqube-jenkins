@@ -36,7 +36,8 @@ pipeline {
 					${scannerHome}/bin/sonar-scanner \
 					-D sonar.projectKey=sonarqube-jenkins \
 					-D sonar.projectName=sonarqube-jenkins \
-					-Dsonar.projectVersion='${env.BUILD_NUMBER}' \
+					-D sonar.projectVersion='${env.BUILD_NUMBER}' \
+					-D sonar.javascript.lcov.reportPaths=unitTests/coverage/lcov.info \
 					-D sonar.sources=. \
 					'''
 				}
